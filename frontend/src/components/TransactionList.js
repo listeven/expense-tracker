@@ -44,6 +44,7 @@ class TransactionList extends Component {
 
     render(){
         const { classes, transactions, deleteTransaction, editTransaction } = this.props;
+        let reversedTransactions = [...transactions].reverse();
         return (
             <Paper className={ classes.root }>
                 <Table className={ classes.table }>
@@ -62,7 +63,8 @@ class TransactionList extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {transactions.map(transaction => {
+                        { 
+                            reversedTransactions.map(transaction => {
                             return (
                                 <Transaction key={ transaction.id } transaction={ transaction } onDeleteClick={ deleteTransaction } onEdit={ editTransaction }/>
                             )})
